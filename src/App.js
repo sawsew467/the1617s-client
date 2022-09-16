@@ -14,6 +14,7 @@ function App() {
       <Categories></Categories>
       <Chicken></Chicken>
       <Coffee></Coffee>
+      <div className="text-sm text-center py-2">© 2022 Powered by ThangTVB.</div>
     </>
   );
 }
