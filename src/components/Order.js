@@ -92,7 +92,7 @@ function Order() {
                 <div className="flex flex-col ml-2 flex-1">
                   <p className="text-lg w-2/3 leading-tight">{product.name}</p>
                   <div className="flex items-center text-[#588157] gap-1 font-medium">
-                    <p className="text-sm">{product.price} VNĐ</p>
+                    <p className="text-sm">{product.price}.000 VNĐ</p>
                     <i className="fa-solid fa-money-bill text-sm"></i>
                   </div>
                 </div>
