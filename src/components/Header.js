@@ -55,7 +55,7 @@ function Header() {
           className={
             isShowMobileMenu && scrollPosition === 0
               ? "fixed top-0 right-0 left-0 z-50 translate-x-0 transition-all duration-500 translate-y-20"
-              : "fixed top-0 right-0 left-0 z-50 translate-x-[100%] transition-all duration-500 translate-y-20"
+              : "fixed top-0 right-0 left-0 z-50 translate-x-[-100%] transition-all duration-500 translate-y-20"
           }
         >
           <div className="bg-white pb-2 rounded-bl-xl rounded-br-xl drop-shadow-[8px_60px_28px_rgba(0,0,0,0.12)]">
