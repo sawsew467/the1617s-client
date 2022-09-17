@@ -3,7 +3,7 @@ import React from "react";
 function Categories() {
   return (
     <>
-      <div className="bg-[#F3F5EB]">
+      <div className="bg-[#F3F5EB]" id="menu">
         <div className="container px-4 pt-4">
           <h3 className="mb-8 text-2xl text-blackText font-bold relative after:absolute after:w-20 after:h-1 after:bg-primary after:left-0 after:bottom-[-4px]">
             Danh mục
