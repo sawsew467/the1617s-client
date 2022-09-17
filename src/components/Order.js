@@ -25,7 +25,7 @@ function Order() {
     setIsShow(!isShow);
   };
   const handleSubmit = () => {
-    console.log(selectedProduct);
+    // console.log(selectedProduct);
     const CODE = GenerateRandomCode.NumCode(5);
     const PRICE = totalPrice;
     let ORDER = "";
@@ -44,7 +44,12 @@ function Order() {
         "https://sheet.best/api/sheets/706057a4-a581-465b-a849-877af461f123",
         data
       )
-      .then((respone) => console.log(respone));
+      .then((respone) => {
+        console.log(respone);
+        const code = respone.data[0].CODE;
+        alert(`Your code is: ${code}`);
+        handleDelete();
+      });
   };
   return (
     <>
