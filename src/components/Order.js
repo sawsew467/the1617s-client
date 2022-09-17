@@ -1,8 +1,11 @@
+import axios from "axios";
 import React, { useState } from "react";
+import GenerateRandomCode from "react-random-code-generator";
 import { useDispatch, useSelector } from "react-redux";
 import PRODUCT_LIST from "../data/products";
 import { setProductList } from "../redux/actions";
 import { productListSelector } from "../redux/slectors";
+import moment from "moment";
 
 function Order() {
   const [isShow, setIsShow] = useState(false);
@@ -19,9 +22,30 @@ function Order() {
   const dispatch = useDispatch();
   const handleDelete = () => {
     dispatch(setProductList(PRODUCT_LIST));
-    setIsShow(!isShow)
-  }
-  console.log(isShow);
+    setIsShow(!isShow);
+  };
+  const handleSubmit = () => {
+    console.log(selectedProduct);
+    const CODE = GenerateRandomCode.NumCode(5);
+    const PRICE = totalPrice;
+    let ORDER = "";
+    for (let item of selectedProduct) {
+      ORDER = ORDER + ` ${item.quantity} ${item.name},`;
+    }
+    const DATE = moment().format("lll");
+    const data = {
+      DATE,
+      CODE,
+      ORDER,
+      PRICE: PRICE + ".000",
+    };
+    axios
+      .post(
+        "https://sheet.best/api/sheets/706057a4-a581-465b-a849-877af461f123",
+        data
+      )
+      .then((respone) => console.log(respone));
+  };
   return (
     <>
       {isShow === false ? (
@@ -35,14 +59,17 @@ function Order() {
           </div>
         </div>
       ) : (
-        <div
-          className="fixed right-0 bottom-0 top-0 left-0 bg-primary z-50 flex flex-col p-4 "
-          
-        >
+        <div className="fixed right-0 bottom-0 top-0 left-0 bg-primary z-50 flex flex-col p-4 ">
           <div className="flex flex-row justify-between pb-4 ">
-            <i class="fa-solid fa-xmark text-2xl text-white" onClick={() => setIsShow(!isShow)}></i>
+            <i
+              class="fa-solid fa-xmark text-2xl text-white"
+              onClick={() => setIsShow(!isShow)}
+            ></i>
             <p className="text-2xl text-white">Giỏ hàng</p>
-            <i class="fa-solid fa-trash-can text-2xl text-white" onClick={handleDelete}></i>
+            <i
+              class="fa-solid fa-trash-can text-2xl text-white"
+              onClick={handleDelete}
+            ></i>
           </div>
           <div className="h-4/5 bg-white shadow-[inset_0_-4px_16px_rgba(0,0,0,0.2)] p-4 overflow-x-auto">
             {selectedProduct.map((product) => (
@@ -75,7 +102,10 @@ function Order() {
                 <p className="text-2xl">{totalPrice}.000 VNĐ</p>
               </div>
             </div>
-            <div className="bg-white w-1/2 text-primary text-2xl font-bold flex justify-center items-center h-full">
+            <div
+              className="bg-white w-1/2 text-primary text-2xl font-bold flex justify-center items-center h-full"
+              onClick={handleSubmit}
+            >
               <p className="">Đặt hàng</p>
             </div>
           </div>
