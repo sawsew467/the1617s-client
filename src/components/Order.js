@@ -1,15 +1,14 @@
-import axios from "axios";
 import React, { useState } from "react";
-import GenerateRandomCode from "react-random-code-generator";
 import { useDispatch, useSelector } from "react-redux";
 import PRODUCT_LIST from "../data/products";
 import { setProductList } from "../redux/actions";
 import { productListSelector } from "../redux/slectors";
-import moment from "moment";
+import Loading from "./Loading";
+import Payment from "./Payment";
 
 function Order() {
   const [isShow, setIsShow] = useState(false);
-  const [isLoading, setIsLoading] = useState(false);
+  const [isShowPayment, setIsShowPayment] = useState(false);
   const productList = useSelector(productListSelector);
   const selectedProduct = productList.filter((product) => product.quantity > 0);
   let numberOfProducts = 0;
@@ -26,35 +25,7 @@ function Order() {
     setIsShow(!isShow);
   };
   const handleSubmit = () => {
-    // console.log(selectedProduct);
-    const CODE = GenerateRandomCode.NumCode(5);
-    const PRICE = totalPrice;
-    let ORDER = "";
-    for (let item of selectedProduct) {
-      ORDER = ORDER + ` ${item.quantity} ${item.name},`;
-    }
-    const DATE = moment().format("lll");
-    const data = {
-      DATE,
-      CODE,
-      ORDER,
-      PRICE: PRICE + ".000",
-    };
-    axios
-      .post(
-        "https://sheet.best/api/sheets/706057a4-a581-465b-a849-877af461f123",
-        data
-      )
-      .then((respone) => {
-        console.log(respone);
-        const code = respone.data[0].CODE;
-        setIsLoading(false);
-
-        alert(`Mã đơn của bạn là: ${code}`);
-
-        handleDelete();
-      });
-    setIsLoading(true);
+    setIsShowPayment(!isShowPayment);
   };
   return (
     <>
@@ -70,14 +41,12 @@ function Order() {
         </div>
       ) : (
         <div className="fixed right-0 bottom-0 top-0 left-0 z-40 flex justify-center items-center bg-[#00000063]">
-          {isLoading && (
-            <div className="absolute bg-primary z-50 flex items-center px-4 py-2">
-              <div className="animate-spin w-12 h-12 rounded-full bg-white flex justify-center items-center relative after:absolute after:w-12 after:h-12 after:bottom-0 after:bg-primary after:loading">
-                <div className="w-9 h-9 rounded-full bg-primary"></div>
-              </div>
-              <p className="text-white text-xl pl-4">Đang gửi...</p>
-            </div>
-          )}
+          
+          {
+            isShowPayment && (
+              <Payment setIsShowPayment={() => setIsShowPayment(!isShowPayment)}></Payment>
+            )
+          }
           <div className="lg:w-[40rem] w-full bg-primary z-40 flex flex-col p-4 ">
             <div className="flex flex-row justify-between pb-4 ">
               <i
