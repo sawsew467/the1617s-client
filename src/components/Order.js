@@ -3,7 +3,6 @@ import { useDispatch, useSelector } from "react-redux";
 import PRODUCT_LIST from "../data/products";
 import { setProductList } from "../redux/actions";
 import { productListSelector } from "../redux/slectors";
-import Loading from "./Loading";
 import Payment from "./Payment";
 
 function Order() {
@@ -34,7 +33,7 @@ function Order() {
           className="fixed right-0 bottom-0 w-32 h-32 bg-primary z-50 rounded-tl-[100%] flex flex-col justify-center items-center"
           onClick={() => setIsShow(!isShow)}
         >
-          <i class="fa-solid fa-basket-shopping text-white text-4xl pl-6 pt-6"></i>
+          <i className="fa-solid fa-basket-shopping text-white text-4xl pl-6 pt-6"></i>
           <div className="text-primary text-sm bg-white w-6 h-6 rounded-full text-center leading-6 absolute right-0 mr-4 mb-3">
             {numberOfProducts}
           </div>
@@ -50,12 +49,12 @@ function Order() {
           <div className="lg:w-[40rem] w-full bg-primary z-40 flex flex-col p-4 ">
             <div className="flex flex-row justify-between pb-4 ">
               <i
-                class="fa-solid fa-xmark text-2xl text-white"
+                className="fa-solid fa-xmark text-2xl text-white"
                 onClick={() => setIsShow(!isShow)}
               ></i>
               <p className="text-2xl text-white">Giỏ hàng</p>
               <i
-                class="fa-solid fa-trash-can text-2xl text-white"
+                className="fa-solid fa-trash-can text-2xl text-white"
                 onClick={handleDelete}
               ></i>
             </div>

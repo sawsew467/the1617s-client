@@ -50,12 +50,12 @@ function ShipOrder({ setIsShowShipOrder }) {
     };
     axios
       .post(
-        "https://sheet.best/api/sheets/706057a4-a581-465b-a849-877af461f123",
+        "https://sheet.best/api/sheets/a4878b25-6fd9-4a31-a6a5-e605b31da9d1",
         data
       )
       .then((respone) => {
         console.log(respone);
-        const code = respone.data[0].CODE;
+        // const code = respone.data[0].CODE;
         setIsLoading(false);
         setCode(CODE);
         // alert(`Mã đơn của bạn là: ${code}`);
@@ -72,11 +72,11 @@ function ShipOrder({ setIsShowShipOrder }) {
         <div className="lg:w-[40rem] w-full bg-primary z-40 flex flex-col p-4 ">
           <div className="flex flex-row justify-between items-center pb-4 ">
             <i
-              class="fa-solid fa-arrow-left text-2xl text-white"
+              className="fa-solid fa-arrow-left text-2xl text-white"
               onClick={() => setIsShowShipOrder()}
             ></i>
             <div className="w-2/3 mx-auto text-white text-center py-2 flex items-center justify-center gap-2">
-              <i class="fa-solid fa-truck-fast text-xl"></i>
+              <i className="fa-solid fa-truck-fast text-xl"></i>
               <p className="text-xl">Thông tin giao hàng</p>
             </div>
             <div></div>

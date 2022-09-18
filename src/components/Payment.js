@@ -36,12 +36,12 @@ function Payment({ setIsShowPayment }) {
     };
     axios
       .post(
-        "https://sheet.best/api/sheets/706057a4-a581-465b-a849-877af461f123",
+        "https://sheet.best/api/sheets/a4878b25-6fd9-4a31-a6a5-e605b31da9d1",
         data
       )
       .then((respone) => {
         console.log(respone);
-        const code = respone.data[0].CODE;
+        // const code = respone.data[0].CODE;
         setIsLoading(false);
         // alert(`Mã đơn của bạn là: ${code}`);
         // window.location.reload();
@@ -64,7 +64,7 @@ function Payment({ setIsShowPayment }) {
         <div className="absolute bg-primary z-50 flex flex-col items-center p-4 gap-4">
           <div className="flex flex-row justify-between items-start">
             <i
-              class="fa-solid fa-arrow-left text-2xl text-white"
+              className="fa-solid fa-arrow-left text-2xl text-white"
               onClick={() => setIsShowPayment()}
             ></i>
             <div className="w-2/3 mx-auto text-white text-center py-2 flex items-center justify-center gap-2">
@@ -76,14 +76,14 @@ function Payment({ setIsShowPayment }) {
             className="w-2/3 bg-white text-primary text-center py-2 flex items-center justify-center gap-2"
             onClick={quickHandle}
           >
-            <i class="fa-solid fa-store"></i>
+            <i className="fa-solid fa-store"></i>
             <p className="text-md">Lấy hàng ngay</p>
           </div>
           <div
             className="w-2/3 bg-white text-primary text-center py-2 flex items-center justify-center gap-2"
             onClick={() => setIsShowShipOrder(!isShowShipOrder)}
           >
-            <i class="fa-solid fa-truck-fast"></i>
+            <i className="fa-solid fa-truck-fast"></i>
             <p className="text-md">Giao hàng</p>
           </div>
         </div>
