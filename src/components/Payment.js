@@ -6,6 +6,7 @@ import { useSelector } from "react-redux";
 import { productListSelector } from "../redux/slectors";
 import Loading from "./Loading";
 import ShipOrder from "./ShipOrder";
+import Success from "./Success";
 
 function Payment({ setIsShowPayment }) {
   const [isShowShipOrder, setIsShowShipOrder] = useState(false);
@@ -17,6 +18,8 @@ function Payment({ setIsShowPayment }) {
   for (let item of selectedProduct) {
     totalPrice += item.quantity * item.price;
   }
+  const [isSuccess, setIsSuccess] = useState(false);
+  const [code, setCode] = useState("");
   const quickHandle = () => {
     const CODE = GenerateRandomCode.NumCode(5);
     const PRICE = totalPrice;
@@ -40,9 +43,11 @@ function Payment({ setIsShowPayment }) {
         console.log(respone);
         const code = respone.data[0].CODE;
         setIsLoading(false);
-        alert(`Mã đơn của bạn là: ${code}`);
-        window.location.reload();
+        // alert(`Mã đơn của bạn là: ${code}`);
+        // window.location.reload();
         // handleDelete();
+        setCode(CODE);
+        setIsSuccess(true);
       });
     setIsLoading(true);
   };
@@ -50,6 +55,7 @@ function Payment({ setIsShowPayment }) {
     <>
       <div className="fixed right-0 bottom-0 top-0 left-0 z-50 flex justify-center items-center bg-[#00000063]">
         {isLoading && <Loading></Loading>}
+        {isSuccess && <Success code={code}></Success>}
         {isShowShipOrder && (
           <ShipOrder
             setIsShowShipOrder={() => setIsShowShipOrder(!isShowShipOrder)}

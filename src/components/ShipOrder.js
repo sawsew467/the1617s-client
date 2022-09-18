@@ -5,6 +5,7 @@ import { useSelector } from "react-redux";
 import { productListSelector } from "../redux/slectors";
 import moment from "moment";
 import Loading from "./Loading";
+import Success from "./Success";
 
 function ShipOrder({ setIsShowShipOrder }) {
   let totalPrice = 0;
@@ -20,10 +21,16 @@ function ShipOrder({ setIsShowShipOrder }) {
     location: "",
   });
   const [isLoading, setIsLoading] = useState(false);
+  const [isSuccess, setIsSuccess] = useState(false);
+  const [code, setCode] = useState("");
   const handleSubmit = () => {
-    if ((userInput.name === "") || (userInput.phone === "") || (userInput.location === "")) {
-        alert("Thông tin không hợp lệ, vui lòng nhập lại!");
-        return;
+    if (
+      userInput.name === "" ||
+      userInput.phone === "" ||
+      userInput.location === ""
+    ) {
+      alert("Thông tin không hợp lệ, vui lòng nhập lại!");
+      return;
     }
     const CODE = GenerateRandomCode.NumCode(5);
     const PRICE = totalPrice;
@@ -38,7 +45,7 @@ function ShipOrder({ setIsShowShipOrder }) {
       ORDER,
       PRICE: PRICE + ".000",
       NAME: userInput.name,
-      PHONE: userInput.phone,
+      PHONE: `'${userInput.phone}`,
       LOCATION: userInput.location,
     };
     axios
@@ -50,19 +57,18 @@ function ShipOrder({ setIsShowShipOrder }) {
         console.log(respone);
         const code = respone.data[0].CODE;
         setIsLoading(false);
-        alert(`Mã đơn của bạn là: ${code}`);
-        window.location.reload();
+        setCode(CODE);
+        // alert(`Mã đơn của bạn là: ${code}`);
+        // window.location.reload();
+        setIsSuccess(true);
       });
     setIsLoading(true);
   };
   return (
     <>
       <div className="fixed right-0 bottom-0 top-0 left-0 z-[70] flex justify-center items-center bg-[#00000063]">
-        {
-            isLoading && (
-                <Loading></Loading>
-            )
-        }
+        {isLoading && <Loading></Loading>}
+        {isSuccess && <Success code={code}></Success>}
         <div className="lg:w-[40rem] w-full bg-primary z-40 flex flex-col p-4 ">
           <div className="flex flex-row justify-between items-center pb-4 ">
             <i
