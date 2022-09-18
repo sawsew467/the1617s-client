@@ -16,3 +16,12 @@ code {
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer utilities {
+
+  .loading {
+    clip-path: polygon(52% 30%, 100% 0, 100% 100%, 0 100%, 0 1%);
+  }
+
+}
+

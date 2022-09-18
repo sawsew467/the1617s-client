@@ -17,7 +17,8 @@ function Header() {
   return (
     <>
       <div className="w-full h-2 bg-primary"></div>
-      <div className="w-full h-20 bg-white container flex flex-row justify-between items-center px-4 drop-shadow-md">
+      <header className="w-full drop-shadow-sm">
+      <div className="w-full h-20 bg-white container mx-auto flex flex-row justify-between items-center px-4">
         <div className="w-16 h-16">
           <img
             src={require("../assets/imgs/logo.png")}
@@ -39,7 +40,7 @@ function Header() {
           <div
             className={
               isShowMobileMenu && scrollPosition === 0
-                ? "w-8 h-1 bg-primary translate-x-[200%] transition-all duration-500"
+                ? "w-8 h-1 bg-primary translate-x-[100%] opacity-0 transition-all duration-500"
                 : "w-8 h-1 bg-primary transition-all duration-500"
             }
           ></div>
@@ -77,6 +78,7 @@ function Header() {
           </div>
         </nav>
       </div>
+      </header>
     </>
   );
 }

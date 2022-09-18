@@ -46,14 +46,18 @@ function Product(props) {
   };
   return (
     <>
-      <div className="w-full bg-white rounded-lg drop-shadow-sm flex flex-col items-center">
-        <div className="flex flex-row items-center p-4 gap-2">
-          <i className="fa-solid fa-crown text-[#f8b600]"></i>
-          <p className="text-lg text-[#f8b600]">Best seller</p>
+      <div className="w-1/2 lg:w-1/3 bg-white rounded-lg drop-shadow-sm flex flex-col items-center justify-end">
+        <div className="flex flex-row items-center p-4 gap-2 h-[60px]">
+          {info.isBestSeller && (
+            <>
+              <i className="fa-solid fa-crown text-[#f8b600]"></i>
+              <p className="text-lg text-[#f8b600]">Best seller</p>
+            </>
+          )}
         </div>
-        <div className="w-full flex justify-center">
+        <div className="w-full flex justify-center lg:h-2/3">
           <img
-            className="w-2/3"
+            className="w-2/3 object-cover"
             src={require("../assets/imgs/" +
               info.type +
               "/" +
@@ -61,26 +65,26 @@ function Product(props) {
               ".png")}
           ></img>
         </div>
-        <h4 className="text-2xl font-semibold">{info.name}</h4>
+        <h4 className="text-lg lg:text-xl font-semibold mt-2">{info.name}</h4>
         <p className="opacity-50">{info.unit}</p>
-        <div className="w-1/3 flex justify-center items-center">
+        <div className="w-full lg:w-full flex justify-center items-center">
           <div className="flex items-center text-[#588157] gap-1 font-medium">
-            <p className="text-lg">{info.price}K VNĐ</p>
-            <i className="fa-solid fa-money-bill text-lg"></i>
+            <p className="text-sm">{info.price}K VNĐ</p>
+            <i className="fa-solid fa-money-bill text-sm"></i>
           </div>
         </div>
         <div className="flex flex-row w-full mt-4">
           <div
-            className="w-2/5 h-14 flex justify-center items-center bg-[#f8b600] rounded-bl-lg "
+            className="w-2/5 h-12 flex justify-center items-center bg-[#f8b600] rounded-bl-lg "
             onClick={handleIncrease}
           >
             <span className="text-white text-2xl font-medium">+</span>
           </div>
           <div className="w-1/5 flex justify-center items-center">
-            <span className="text-lg">{info.quantity}</span>
+            <span className="text-sm">{info.quantity}</span>
           </div>
           <div
-            className="w-2/5 h-14 flex justify-center items-center bg-[#f8b600] rounded-br-lg"
+            className="w-2/5 h-12 flex justify-center items-center bg-[#f8b600] rounded-br-lg"
             onClick={handleDecrease}
           >
             <span className="text-white text-2xl font-medium">-</span>

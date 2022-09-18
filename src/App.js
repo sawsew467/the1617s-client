@@ -8,6 +8,7 @@ import { useSelector } from "react-redux";
 import { productListSelector } from "./redux/slectors";
 import Order from "./components/Order";
 import Contact from "./components/Contact";
+import Snack from "./components/Snack";
 
 function App() {
   const productList = useSelector(productListSelector);
@@ -25,9 +26,13 @@ function App() {
       <About></About>
       <Categories></Categories>
       <Chicken></Chicken>
+      <Snack></Snack>
       <Coffee></Coffee>
+      <div className="w-full lg:h-[32rem]">
+        <img className="h-full w-full object-cover" src={require("./assets/imgs/banner2.png")}></img>
+      </div>
       <Contact></Contact>
-      <div className="text-sm text-center py-2">© 2022 Powered by ThangTVB.</div>
+      <div className="text-sm text-center py-2 bg-slate-100">© 2022 Powered by ThangTVB.</div>
     </>
   );
 }
