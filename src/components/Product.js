@@ -55,9 +55,9 @@ function Product(props) {
             </>
           )}
         </div>
-        <div className="w-full flex justify-center lg:h-2/3">
+        <div className="w-5/6 flex justify-center lg:h-2/3">
           <img
-            className="w-2/3 object-cover"
+            className="w-full object-cover"
             src={require("../assets/imgs/" +
               info.type +
               "/" +
@@ -75,19 +75,20 @@ function Product(props) {
         </div>
         <div className="flex flex-row w-full mt-4">
           <div
-            className="w-2/5 h-12 flex justify-center items-center bg-[#f8b600] rounded-bl-lg "
-            onClick={handleIncrease}
+            className="w-2/5 h-12 flex justify-center items-center bg-[#f8b600] rounded-bl-lg"
+            onClick={handleDecrease}
           >
-            <span className="text-white text-2xl font-medium">+</span>
+            <span className="text-white text-2xl font-medium">-</span>
           </div>
+
           <div className="w-1/5 flex justify-center items-center">
             <span className="text-sm">{info.quantity}</span>
           </div>
           <div
-            className="w-2/5 h-12 flex justify-center items-center bg-[#f8b600] rounded-br-lg"
-            onClick={handleDecrease}
+            className="w-2/5 h-12 flex justify-center items-center bg-[#f8b600] rounded-br-lg "
+            onClick={handleIncrease}
           >
-            <span className="text-white text-2xl font-medium">-</span>
+            <span className="text-white text-2xl font-medium">+</span>
           </div>
         </div>
       </div>
