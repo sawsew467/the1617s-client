@@ -79,12 +79,18 @@ function Payment({ setIsShowPayment }) {
             <i className="fa-solid fa-store"></i>
             <p className="text-md">Lấy hàng ngay</p>
           </div> */}
-          <div
+          {/* <div
             className="w-2/3 bg-white text-primary text-center py-2 flex items-center justify-center gap-2"
             onClick={() => setIsShowShipOrder(!isShowShipOrder)}
           >
             <i className="fa-solid fa-truck-fast"></i>
             <p className="text-md">Giao hàng</p>
+          </div> */}
+          <div
+            className="w-2/3 bg-white text-primary text-center py-2 flex items-center justify-center gap-2 p-4"
+            // onClick={() => setIsShowShipOrder(!isShowShipOrder)}
+          >
+            <p className="text-md">Nhận order sau 21:00 mỗi ngày, vui lòng quay lại sau</p>
           </div>
         </div>
       </div>
