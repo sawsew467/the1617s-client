@@ -36,7 +36,7 @@ function Payment({ setIsShowPayment }) {
     };
     axios
       .post(
-        "https://sheet.best/api/sheets/a4878b25-6fd9-4a31-a6a5-e605b31da9d1",
+        "https://sheet.best/api/sheets/4efef5f4-f0bf-4dda-87c6-4b030c2f5d01",
         data
       )
       .then((respone) => {

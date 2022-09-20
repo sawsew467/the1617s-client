@@ -4,7 +4,7 @@ const PRODUCT_LIST = [
         name: 'Gà viên chiên giòn',
         type: 'chicken',
         price: '20',
-        unit: '8 Viên',
+        unit: '12 Viên',
         img: "gà viên",
         quantity: 0,
         isBestSeller: true
@@ -14,7 +14,7 @@ const PRODUCT_LIST = [
         name: 'Gà vòng chiên giòn',
         type: 'chicken',
         price: '20',
-        unit: '5 Vòng',
+        unit: '8 Vòng',
         img: "gà vòng",
         quantity: 0,
         isBestSeller: false
