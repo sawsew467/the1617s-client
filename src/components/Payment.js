@@ -72,13 +72,13 @@ function Payment({ setIsShowPayment }) {
             </div>
             <div></div>
           </div>
-          <div
+          {/* <div
             className="w-2/3 bg-white text-primary text-center py-2 flex items-center justify-center gap-2"
             onClick={quickHandle}
           >
             <i className="fa-solid fa-store"></i>
             <p className="text-md">Lấy hàng ngay</p>
-          </div>
+          </div> */}
           <div
             className="w-2/3 bg-white text-primary text-center py-2 flex items-center justify-center gap-2"
             onClick={() => setIsShowShipOrder(!isShowShipOrder)}
